@@ -1,31 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Include the necessary CSS -->
-  <link rel="stylesheet" href="css/style.css">
-  <title>Deployment Factory</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Factory</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        section {
+            background-color: #fff;
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: 2px solid black;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* Planning Section Styles */
+        #planning-btn {
+            background-color: red;
+            color: white;
+        }
+
+        /* Pre-Cutover Section Styles */
+        #pre-cutover-btn {
+            background-color: #00bcd4; /* Cayan color */
+            color: white;
+        }
+
+        /* Post-Cutover Section Styles */
+        #post-cutover-btn {
+            background-color: orange;
+            color: white;
+        }
+
+        /* Search Button Styles */
+        .search-btn {
+            background-color: red;
+            color: white;
+        }
+
+        /* Data Sheet Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
 
-  <section>
-    <h2>Planning</h2>
-    <p>Store level planning</p>
-    <a href="planning.html" class="button" id="planning-button">View/Plan</a>
-  </section>
+    <!-- Planning Section -->
+    <section>
+        <h2>Planning - Store Level Planning</h2>
+        <button class="btn" id="planning-btn">View/Plan</button>
+        <div id="planning-section" style="display: none;">
+            <!-- Filters and Search Button -->
+            <select>
+                <option>Ross Register Refresh</option>
+                <option>Ross Wi-Fi Refresh</option>
+            </select>
+            <select>
+                <option>All</option>
+                <option>Store 1</option>
+                <option>Store 2</option>
+                <!-- Add more dummy store numbers -->
+            </select>
+            <select>
+                <!-- Add 12 months -->
+            </select>
+            <input type="date"> - <input type="date">
+            <select>
+                <option>Planned</option>
+                <option>Potential Reschedule</option>
+                <option>Cancelled</option>
+            </select>
+            <button class="btn search-btn">Search</button>
 
-  <section>
-    <h2>Pre-Cutover Follow-Up</h2>
-    <p>Check your store/technician</p>
-    <a href="pre-cutover.html" class="button" id="pre-cutover-button">Confirm</a>
-  </section>
+            <!-- Search Results Data Sheet -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Store Number</th>
+                        <th>Store Name</th>
+                        <!-- Add more headers -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Populate with dummy data -->
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-  <section>
-    <h2>Post Cutover</h2>
-    <p>Get live status</p>
-    <a href="post-cutover.html" class="button" id="post-cutover-button">Track</a>
-  </section>
+    <!-- Pre-Cutover Section -->
+    <section>
+        <h2>Pre-Cutover Follow-Up - Check Your Store/Technician</h2>
+        <button class="btn" id="pre-cutover-btn">Confirm</button>
+        <div id="pre-cutover-section" style="display: none;">
+            <!-- Store Number Dropdown and Data Entry -->
+            <select>
+                <!-- Populate with dummy store numbers -->
+            </select>
+            <button class="btn">Submit</button>
 
-  <!-- Include the necessary JavaScript -->
-  <script src="js/main.js"></script>
+            <!-- Data Entry Section -->
+            <!-- Populate with pre-filled and user-fillable data fields -->
+        </div>
+    </section>
+
+    <!-- Post-Cutover Section -->
+    <section>
+        <h2>Post Cutover - Get Live Status</h2>
+        <button class="btn" id="post-cutover-btn">Track</button>
+        <div id="post-cutover-section" style="display: none;">
+            <!-- Filters and Search Button -->
+            <select>
+                <option>Ross Register Refresh</option>
+                <option>Ross Wi-Fi Refresh</option>
+            </select>
+            <select>
+                <option>All</option>
+                <option>Store 1</option>
+                <option>Store 2</option>
+                <!-- Add more dummy store numbers -->
+            </select>
+            <select>
+                <!-- Add 12 months -->
+            </select>
+            <input type="date"> - <input type="date">
+            <button class="btn search-btn">Search</button>
+
+            <!-- Search Results Data Sheet -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Store Number</th>
+                        <th>Install Date</th>
+                        <!-- Add more headers -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Populate with dummy data -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript code for handling button clicks and displaying/hiding sections
+        document.getElementById('planning-btn').addEventListener('click', function () {
+            document.getElementById('planning-section').style.display = 'block';
+        });
+
+        document.getElementById('pre-cutover-btn').addEventListener('click', function () {
+            document.getElementById('pre-cutover-section').style.display = 'block';
+        });
+
+        document.getElementById('post-cutover-btn').addEventListener('click', function () {
+            document.getElementById('post-cutover-section').style.display = 'block';
+        });
+    </script>
+
 </body>
 </html>
