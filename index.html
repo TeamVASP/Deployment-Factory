@@ -3,186 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Management Factory</title>
+    <title>Project Management System</title>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f2f2f2;
         }
 
         section {
-            background-color: #fff;
-            margin: 20px;
-            padding: 20px;
-            border: 2px solid black;
-            border-radius: 10px;
+            text-align: center;
+            padding: 50px;
         }
 
-        .btn {
+        .box {
             display: inline-block;
-            padding: 15px 30px;
-            font-size: 18px;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
+            padding: 20px;
             border: 2px solid black;
-            border-radius: 5px;
-            margin-bottom: 20px;
         }
 
         /* Planning Section Styles */
-        #planning-btn {
+        #planning-section {
+            background-color: #f0f0f0;
+        }
+
+        #planning-button {
             background-color: red;
             color: white;
+            padding: 15px 30px;
+            border: 2px solid black;
+            cursor: pointer;
         }
 
-        /* Pre-Cutover Section Styles */
-        #pre-cutover-btn {
-            background-color: #00bcd4; /* Cayan color */
-            color: white;
+        /* Filters Styles */
+        .filter {
+            margin: 10px;
         }
 
-        /* Post-Cutover Section Styles */
-        #post-cutover-btn {
-            background-color: orange;
-            color: white;
-        }
-
-        /* Search Button Styles */
-        .search-btn {
+        #search-button {
             background-color: red;
             color: white;
+            padding: 10px 20px;
+            border: 2px solid black;
+            cursor: pointer;
         }
 
-        /* Data Sheet Styles */
+        /* Result Table Styles */
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
 
-        th, td {
+        table, th, td {
             border: 1px solid black;
+        }
+
+        th, td {
             padding: 10px;
             text-align: left;
+        }
+
+        /* Pre-Cutover Follow-up Section Styles */
+        #follow-up-section {
+            background-color: #e6e6e6;
+        }
+
+        #confirm-button {
+            background-color: #00bcd4; /* Cayan color */
+            color: white;
+            padding: 15px 30px;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        /* Post Cutover Section Styles */
+        #post-cutover-section {
+            background-color: #ffd700; /* Orange color */
+        }
+
+        #track-button {
+            background-color: #ffa500; /* Orange color */
+            color: white;
+            padding: 15px 30px;
+            border: 2px solid black;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <!-- Planning Section -->
-    <section>
-        <h2>Planning - Store Level Planning</h2>
-        <button class="btn" id="planning-btn">View/Plan</button>
-        <div id="planning-section" style="display: none;">
-            <!-- Filters and Search Button -->
-            <select>
+<!-- Planning Section -->
+<section id="planning-section">
+    <div class="box">
+        <h2>Planning</h2>
+        <h4 style="font-size: 14px;">Store Level Planning</h4>
+        <button id="planning-button">View/Plan</button>
+
+        <!-- Filters -->
+        <div class="filter">
+            <label for="project-name">Project Name:</label>
+            <select id="project-name">
                 <option>Ross Register Refresh</option>
                 <option>Ross Wi-Fi Refresh</option>
             </select>
-            <select>
-                <option>All</option>
-                <option>Store 1</option>
-                <option>Store 2</option>
-                <!-- Add more dummy store numbers -->
-            </select>
-            <select>
-                <!-- Add 12 months -->
-            </select>
-            <input type="date"> - <input type="date">
-            <select>
-                <option>Planned</option>
-                <option>Potential Reschedule</option>
-                <option>Cancelled</option>
-            </select>
-            <button class="btn search-btn">Search</button>
+        </div>
+        <!-- Add other filters here -->
 
-            <!-- Search Results Data Sheet -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>Store Number</th>
-                        <th>Store Name</th>
-                        <!-- Add more headers -->
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Populate with dummy data -->
-                </tbody>
+        <button id="search-button">Search</button>
+
+        <!-- Result Table -->
+        <table id="result-table">
+            <!-- Table headers -->
+            <tr>
+                <th>Store Number</th>
+                <th>Store Name</th>
+                <th>Planned Install Date</th>
+                <th>Vendor</th>
+                <th>Replacement Type</th>
+                <th>Tech Arrival Time</th>
+                <th>Store Closing Time</th>
+                <th>Store E-mail Id</th>
+                <th>Store MOD E-mail Id</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Postal Code</th>
+                <th>Country Code</th>
+                <th>Phone Number</th>
+                <th>Time Zone</th>
+                <th>MOD</th>
+                <th>MOD for Install</th>
+                <th>Asset Delivery</th>
+                <th>Call to Store T-5</th>
+                <th>Conversation Notes T-5</th>
+                <th>Call to Store T-3</th>
+                <th>Conversation Notes T-3</th>
+                <th>Call to Store T-1</th>
+                <th>Conversation Notes T-1</th>
+                <th>Shipment Triggered</th>
+                <th>Shipment Received on</th>
+            </tr>
+            <!-- Table rows with dummy data -->
+            <tr>
+                <td>0684</td>
+                <td>Spring Valley</td>
+                <td>01-01-2024</td>
+                <td>Toshiba</td>
+                <td>Swap</td>
+                <td>20:30:00</td>
+                <td>21:00:00</td>
+                <td>store.0684@ross.com</td>
+                <td>store.manager.0684.ross.com</td>
+                <td>1764 Bernal Rd Street 60A</td>
+                <td>Cheyenne</td>
+                <td>WY</td>
+                <td>110070</td>
+                <td>01</td>
+                <td>1234567899</td>
+                <td>PST</td>
+                <td>Glen</td>
+                <td>Maxwell</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Store is gathering info</td>
+                <td>Yes</td>
+                <td>Store is allocating people</td>
+                <td>Yes</td>
+                <td>Store is ready for installation</td>
+                <td>Yes</td>
+                <td>31-12-2023</td>
+            </tr>
+            <!-- Add more rows with similar structure for additional data -->
+        </table>
+    </div>
+</section>
+
+<!-- Pre-Cutover Follow-up Section -->
+<section id="follow-up-section">
+    <div class="box">
+        <h2>Pre-Cutover Follow-up</h2>
+        <h4 style="font-size: 14px;">Check your store/technician</h4>
+        <button id="confirm-button">Confirm</button>
+
+        <!-- Dropdown and form for store selection -->
+        <div id="store-selection" style="display: none;">
+            <label for="store-number">Select Store Number:</label>
+            <select id="store-number">
+                <!-- Dummy store numbers -->
+                <option>1234</option>
+                <option>5678</option>
+            </select>
+            <button id="submit-button">Submit</button>
+
+            <!-- Data Fields -->
+            <div id="data-fields" style="display: none;">
+                <!-- Display pre-filled data fields and form for user input -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Post Cutover Section -->
+<section id="post-cutover-section">
+    <div class="box">
+        <h2>Post Cutover</h2>
+        <h4 style="font-size: 14px;">Get Live Status</h4>
+        <button id="track-button">Track</button>
+
+        <!-- Filters for tracking -->
+        <div id="tracking-filters" style="display: none;">
+            <!-- Add filters for tracking -->
+            <button id="search-track-button">Search</button>
+
+            <!-- Result Table for tracking -->
+            <table id="track-result-table">
+                <!-- Table headers for tracking -->
+                <tr>
+                    <th>Store Number</th>
+                    <th>Install Date</th>
+                    <th>Vendor</th>
+                    <th>Replacement Type</th>
+                    <th>Tech Arrival Time</th>
+                    <th>Store Closing Time</th>
+                    <th>Register Count</th>
+                    <th>Status</th>
+                    <th>Return Visit Required</th>
+                    <th>Reason for Return</th>
+                    <th>Garage Plates Used</th>
+                    <th>Notes</th>
+                    <th>Tech Check-Out Time</th>
+                    <th>Total Time On Site</th>
+                    <th># of Techs</th>
+                    <th>Additional Deployment Comments</th>
+                </tr>
+                <!-- Table rows with dummy data for tracking -->
+                <tr>
+                    <td>0420</td>
+                    <td>01-01-2024</td>
+                    <td>Shyft</td>
+                    <td>Replacement</td>
+                    <td>20:30:00</td>
+                    <td>21:00:00</td>
+                    <td>6</td>
+                    <td>Completed</td>
+                    <td>Yes</td>
+                    <td>Reg# 6 HDD stolen</td>
+                    <td>Yes</td>
+                    <td>Reg# 5 doesn't give initial welcome voice prompt. All other voice prompts working. Validations were completed</td>
+                    <td>04:21:00</td>
+                    <td>---</td>
+                    <td>1</td>
+                    <td>---</td>
+                </tr>
+                <!-- Add more rows with similar structure for additional data -->
             </table>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Pre-Cutover Section -->
-    <section>
-        <h2>Pre-Cutover Follow-Up - Check Your Store/Technician</h2>
-        <button class="btn" id="pre-cutover-btn">Confirm</button>
-        <div id="pre-cutover-section" style="display: none;">
-            <!-- Store Number Dropdown and Data Entry -->
-            <select>
-                <!-- Populate with dummy store numbers -->
-            </select>
-            <button class="btn">Submit</button>
-
-            <!-- Data Entry Section -->
-            <!-- Populate with pre-filled and user-fillable data fields -->
-        </div>
-    </section>
-
-    <!-- Post-Cutover Section -->
-    <section>
-        <h2>Post Cutover - Get Live Status</h2>
-        <button class="btn" id="post-cutover-btn">Track</button>
-        <div id="post-cutover-section" style="display: none;">
-            <!-- Filters and Search Button -->
-            <select>
-                <option>Ross Register Refresh</option>
-                <option>Ross Wi-Fi Refresh</option>
-            </select>
-            <select>
-                <option>All</option>
-                <option>Store 1</option>
-                <option>Store 2</option>
-                <!-- Add more dummy store numbers -->
-            </select>
-            <select>
-                <!-- Add 12 months -->
-            </select>
-            <input type="date"> - <input type="date">
-            <button class="btn search-btn">Search</button>
-
-            <!-- Search Results Data Sheet -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>Store Number</th>
-                        <th>Install Date</th>
-                        <!-- Add more headers -->
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Populate with dummy data -->
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <script>
-        // JavaScript code for handling button clicks and displaying/hiding sections
-        document.getElementById('planning-btn').addEventListener('click', function () {
-            document.getElementById('planning-section').style.display = 'block';
-        });
-
-        document.getElementById('pre-cutover-btn').addEventListener('click', function () {
-            document.getElementById('pre-cutover-section').style.display = 'block';
-        });
-
-        document.getElementById('post-cutover-btn').addEventListener('click', function () {
-            document.getElementById('post-cutover-section').style.display = 'block';
-        });
-    </script>
+<script>
+    // Add JavaScript for handling button clicks, showing/hiding sections, and populating data
+</script>
 
 </body>
 </html>
