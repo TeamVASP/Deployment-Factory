@@ -63,12 +63,12 @@
     }
 
     /* Search button styling */
-    #search-btn {
+    .search-btn {
       background-color: red;
       color: #fff;
     }
 
-    /* Data sheet styling */
+    /* Data Sheet styling */
     .data-sheet {
       margin-top: 20px;
       border-collapse: collapse;
@@ -107,28 +107,15 @@
 
   <!-- Filter Section (Hidden by default) -->
   <div id="filter-section" style="display: none;" class="section">
-    <h3>Filter Options</h3>
+    <h3 id="filter-title">Filter Options</h3>
     <label for="project-name">Project Name:</label>
-    <select id="project-name">
-      <option value="Ross Register Refresh">Ross Register Refresh</option>
-      <option value="Ross Wi-Fi Refresh">Ross Wi-Fi Refresh</option>
-    </select><br>
+    <select id="project-name"></select><br>
 
     <label for="store-number">Store Number:</label>
-    <select id="store-number">
-      <option value="all">All</option>
-      <option value="0684">0684</option>
-      <!-- Add more dummy store numbers -->
-
-    </select><br>
+    <select id="store-number"></select><br>
 
     <label for="deployment-month">Deployment Month:</label>
-    <select id="deployment-month">
-      <option value="all">All</option>
-      <option value="Jan">Jan</option>
-      <!-- Add more months -->
-
-    </select><br>
+    <select id="deployment-month"></select><br>
 
     <label for="from-date">From Date:</label>
     <input type="date" id="from-date"><br>
@@ -137,49 +124,17 @@
     <input type="date" id="to-date"><br>
 
     <label for="status">Status:</label>
-    <select id="status">
-      <option value="planned">Planned</option>
-      <option value="reschedule">Potential Reschedule</option>
-      <option value="cancelled">Cancelled</option>
-    </select><br>
+    <select id="status"></select><br>
 
-    <div id="search-btn" class="button" onclick="searchData()">Search</div>
+    <div id="search-btn" class="search-btn button" onclick="searchData()">Search</div>
   </div>
 
   <!-- Data Sheet Section (Hidden by default) -->
   <div id="data-sheet" style="display: none;" class="section">
-    <h3>Data Sheet</h3>
+    <h3 id="data-sheet-title">Data Sheet</h3>
     <table class="data-sheet">
       <thead>
-        <tr>
-          <th>Store Number (0684)</th>
-          <th>Store Name (Spring Valley)</th>
-          <th>Planned Install Date (01-01-2024)</th>
-          <th>Vendor (Toshiba)</th>
-          <th>Replacement Type (Swap)</th>
-          <th>Tech Arrival Time (20:30:00)</th>
-          <th>Store Closing Time (21:00:00)</th>
-          <th>Store E-mail Id (store.0684@ross.com)</th>
-          <th>Store MOD E-mail Id (store.manager.0684.ross.com)</th>
-          <th>Address (1764 Bernal Rd Street 60A)</th>
-          <th>City (Cheyenne)</th>
-          <th>State (WY)</th>
-          <th>Postal Code (110070)</th>
-          <th>Country Code (01)</th>
-          <th>Phone Number (1234567899)</th>
-          <th>Time Zone (PST)</th>
-          <th>MOD (Glen)</th>
-          <th>MOD for Install (Maxwell)</th>
-          <th>Asset Delivery (Yes)</th>
-          <th>Call to Store T-5 (Yes)</th>
-          <th>Conversation Notes (Store is gathering info)</th>
-          <th>Call to Store T-3 (Yes)</th>
-          <th>Conversation Notes (Store is allocating people)</th>
-          <th>Call to Store T-1 (Yes)</th>
-          <th>Conversation Notes (Store is ready for installation)</th>
-          <th>Shipment Triggered (Yes)</th>
-          <th>Shipment Received on (31-12-2023)</th>
-        </tr>
+        <!-- Headers will be dynamically populated based on section -->
       </thead>
       <tbody id="data-sheet-body">
         <!-- Dummy data rows will be populated here -->
@@ -192,16 +147,49 @@
     function openFilterSection(filterType) {
       document.getElementById('filter-section').style.display = 'block';
       document.getElementById('data-sheet').style.display = 'none';
-      // Add logic to handle different filter types if needed
+
+      // Clear previous options
+      clearFilterOptions();
+
+      // Populate filter options based on section
+      if (filterType === 'filter-planning') {
+        document.getElementById('filter-title').textContent = 'Planning Filter Options';
+        populateFilterOptions('project-name', ['Ross Register Refresh', 'Ross Wi-Fi Refresh']);
+        populateFilterOptions('store-number', ['All', '0684', '0420']); // Add more dummy store numbers
+        populateFilterOptions('deployment-month', ['All', 'Jan', 'Feb', 'Mar']); // Add more months
+        populateFilterOptions('status', ['Planned', 'Potential Reschedule', 'Cancelled']);
+      } else if (filterType === 'filter-follow-up') {
+        document.getElementById('filter-title').textContent = 'Pre-Cutover Follow-up Filter Options';
+        populateFilterOptions('store-number', ['Select Store', '0684', '0420']); // Add more dummy store numbers
+      } else if (filterType === 'filter-post-cutover') {
+        document.getElementById('filter-title').textContent = 'Post Cutover Filter Options';
+        populateFilterOptions('project-name', ['Ross Register Refresh', 'Ross Wi-Fi Refresh']);
+        populateFilterOptions('store-number', ['All', '0420', '0542']); // Add more dummy store numbers
+        populateFilterOptions('deployment-month', ['All', 'Jan', 'Feb', 'Mar']); // Add more months
+      }
+    }
+
+    function populateFilterOptions(selectId, options) {
+      const select = document.getElementById(selectId);
+      options.forEach(option => {
+        const optionElem = document.createElement('option');
+        optionElem.value = option.toLowerCase().replace(/\s/g, '-'); // Convert to lowercase and replace spaces with hyphens
+        optionElem.textContent = option;
+        select.appendChild(optionElem);
+      });
+    }
+
+    function clearFilterOptions() {
+      const selects = document.querySelectorAll('select');
+      selects.forEach(select => {
+        select.innerHTML = '';
+      });
     }
 
     function searchData() {
       // Dummy data for demonstration purposes
       const dummyData = [
-        ["0684", "Spring Valley", "01-01-2024", "Toshiba", "Swap", "20:30:00", "21:00:00", "store.0684@ross.com", "store.manager.0684.ross.com",
-          "1764 Bernal Rd Street 60A", "Cheyenne", "WY", "110070", "01", "1234567899", "PST", "Glen", "Maxwell", "Yes", "Yes", "Store is gathering info",
-          "Yes", "Store is allocating people", "Yes", "Store is ready for installation", "Yes", "31-12-2023"],
-        // Add more dummy data rows as needed
+        // Data rows will be dynamically populated based on section
       ];
 
       // Populate data sheet with dummy data
@@ -217,6 +205,11 @@
         dataSheetBody.appendChild(row);
       });
 
+      // Headers will be dynamically populated based on section
+      const dataSheetHeaders = document.querySelector('.data-sheet thead');
+      dataSheetHeaders.innerHTML = '';
+
+      // Show data sheet
       document.getElementById('data-sheet').style.display = 'block';
     }
   </script>
