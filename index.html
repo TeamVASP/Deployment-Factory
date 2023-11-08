@@ -96,9 +96,11 @@
             <input type="date" placeholder="From Date">
             <input type="date" placeholder="To Date">
             <select>
-                <option>Planned</option>
-                <option>Potential Reschedule</option>
-                <option>Cancelled</option>
+                <option>Completed</option>
+                <option>Not Scheduled</option>
+                <option>To be Rescheduled</option>
+                <option>Scheduled</option>
+                <option>Incomplete</option>
             </select>
             <div class="search-btn button" style="background-color: red;" onclick="searchData('planning')">Search</div>
         </div>
@@ -109,29 +111,22 @@
                     <tr>
                         <th>Store Number</th>
                         <th>Store Name</th>
-                        <th>Planned Install Date</th>
+                        <th>Install Date</th>
                         <th>Vendor</th>
                         <th>Replacement Type</th>
                         <th>Tech Arrival Time</th>
                         <th>Store Closing Time</th>
                         <th>Store E-mail Id</th>
-                        <th>Store MOD E-mail Id</th>
                         <th>Address</th>
                         <th>City</th>
                         <th>State</th>
                         <th>Postal Code</th>
                         <th>Country Code</th>
                         <th>Phone Number</th>
-                        <th>Time Zone</th>
-                        <th>MOD</th>
-                        <th>MOD for Install</th>
-                        <th>Asset Delivery</th>
-                        <th>Call to Store T-5</th>
-                        <th>Conversation Notes</th>
-                        <th>Call to Store T-3</th>
-                        <th>Conversation Notes</th>
-                        <th>Call to Store T-1</th>
-                        <th>Conversation Notes</th>
+                        <th>SCO Lanes</th>
+                        <th>SCO with Cash Recycler</th>
+                        <th>Register Count</th>
+                        <th>Store Status</th>
                         <th>Shipment Received On</th>
                     </tr>
                 </thead>
@@ -146,27 +141,16 @@
                         <td>20:30:00</td>
                         <td>21:00:00</td>
                         <td>store.0684@ross.com</td>
-                        <td>store.manager.0684.ross.com</td>
                         <td>1764 Bernal Rd Street 60A</td>
                         <td>Cheyenne</td>
                         <td>WY</td>
                         <td>110070</td>
                         <td>01</td>
                         <td>1234567899</td>
-                        <td>PST</td>
-                        <td>Glen</td>
-                        <td>Maxwell</td>
-                        <td>
-                            <span style="color: green;">Yes</span>
-                            <br>
-                            <span style="color: red;">No</span>
-                        </td>
-                        <td>Yes</td>
-                        <td>Store is gathering info</td>
-                        <td>Yes</td>
-                        <td>Store is allocating people</td>
-                        <td>Yes</td>
-                        <td>Store is ready for installation</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td>Scheduled</td>
                         <td>31-12-2023</td>
                     </tr>
                     <!-- Add more dummy data rows as needed -->
@@ -204,6 +188,14 @@
                         <th>Called the MOD</th>
                         <th>MOD Name</th>
                         <th>Comments</th>
+                        <th>Store E-mail Id</th>
+                        <th>Call to Store T-5</th>
+                        <th>Conversation Notes</th>
+                        <th>Call to Store T-3</th>
+                        <th>Conversation Notes</th>
+                        <th>Call to Store T-1</th>
+                        <th>Conversation Notes</th>
+                        <th>Shipment Received On</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -219,6 +211,14 @@
                         <td>Yes</td>
                         <td>Sachin</td>
                         <td>Store received the shipment boxes and has MOD Sachin aligned to stay overnight respectively.</td>
+                        <td>store.0684@ross.com</td>
+                        <td>Yes</td>
+                        <td>Store is gathering info</td>
+                        <td>Yes</td>
+                        <td>Store is allocating people</td>
+                        <td>Yes</td>
+                        <td>Store is ready for installation</td>
+                        <td>31-12-2023</td>
                     </tr>
                     <!-- Add more dummy data rows as needed -->
                 </tbody>
@@ -227,7 +227,7 @@
     </div>
 
     <div class="section">
-        <h2>Post-Cutover</h2>
+        <h2>Post Cutover Status</h2>
         <h4 style="font-size: 14px;">Get Live Status</h4>
         <div class="button track-btn" onclick="openFilterSection('post-cutover')">Track</div>
         <div class="filter-section" id="filter-section-post-cutover">
@@ -247,7 +247,7 @@
             <div class="search-btn button" style="background-color: orange;" onclick="searchData('post-cutover')">Search</div>
         </div>
         <div class="data-sheet" id="data-sheet-post-cutover">
-            <h3>Data Sheet - Post-Cutover</h3>
+            <h3>Data Sheet - Post Cutover Status</h3>
             <table>
                 <thead>
                     <tr>
@@ -267,11 +267,13 @@
                         <th>Total Time On Site</th>
                         <th># of Techs</th>
                         <th>Additional Deployment Comments</th>
+                        <th>Average Time (Ph1) (Mins)</th>
+                        <th>Average Time (Ph2) (Mins)</th>
                         <!-- Add more headers as needed -->
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Dummy data row for Post-Cutover -->
+                    <!-- Dummy data row for Post Cutover Status -->
                     <tr>
                         <td>0420</td>
                         <td>01-01-2024</td>
@@ -284,11 +286,13 @@
                         <td>Yes</td>
                         <td>Reg# 6 HDD stolen by customer</td>
                         <td>Yes</td>
-                        <td>Reg# 5 doesn't give initial welcome voice prompt. All other voice prompts working. Validations were completed</td>
+                        <td>Done</td>
                         <td>04:21:00</td>
                         <td>8 hrs</td>
                         <td>1</td>
                         <td>Yes</td>
+                        <td>31</td>
+                        <td>25</td>
                         <!-- Add more dummy data rows as needed -->
                     </tr>
                 </tbody>
@@ -310,13 +314,13 @@
         function searchData(section) {
             const dummyData = {
                 'planning': [
-                    ["0684", "Spring Valley", "01-01-2024", "Toshiba", "Swap", "20:30:00", "21:00:00", "store.0684@ross.com", "store.manager.0684.ross.com", "1764 Bernal Rd Street 60A", "Cheyenne", "WY", "110070", "01", "1234567899", "PST", "Glen", "Maxwell", "Yes", "Yes", "Reg# 6 HDD stolen by customer", "Yes", "Reg# 5 doesn't give initial welcome voice prompt. All other voice prompts working. Validations were completed", "31-12-2023"],
+                    ["0684", "Spring Valley", "01-01-2024", "Toshiba", "Swap", "20:30:00", "21:00:00", "store.0684@ross.com", "1764 Bernal Rd Street 60A", "Cheyenne", "WY", "110070", "01", "1234567899", "1", "1", "6", "Scheduled", "31-12-2023"],
                 ],
                 'follow-up': [
-                    ["Sachin", "1234567899", "Virat", "1234567888", "Shubhman", "1234567777", "Yes", "Yes", "Sachin", "Store received the shipment boxes and has MOD Sachin aligned to stay overnight respectively."],
+                    ["Sachin", "1234567899", "Virat", "1234567888", "Shubhman", "1234567777", "Yes", "Yes", "Sachin", "Store received the shipment boxes and has MOD Sachin aligned to stay overnight respectively.", "store.0684@ross.com", "Yes", "Store is gathering info", "Yes", "Store is allocating people", "Yes", "Store is ready for installation", "31-12-2023"],
                 ],
                 'post-cutover': [
-                    ["0420", "01-01-2024", "Shyft", "Replacement", "20:30:00", "21:00:00", "6", "Incomplete", "Yes", "Reg# 6 HDD stolen by customer", "Yes", "Reg# 5 doesn't give initial welcome voice prompt. All other voice prompts working. Validations were completed", "04:21:00", "8 hrs", "1", "Yes"],
+                    ["0420", "01-01-2024", "Shyft", "Replacement", "20:30:00", "21:00:00", "6", "Incomplete", "Yes", "Reg# 6 HDD stolen by customer", "Yes", "Done", "04:21:00", "8 hrs", "1", "Yes", "31", "25"],
                 ],
             };
 
