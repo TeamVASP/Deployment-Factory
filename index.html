@@ -1,217 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Management Factory</title>
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Factory</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-    .section {
-      text-align: center;
-      padding: 20px;
-      border: 2px solid black;
-      margin: 20px;
-    }
+        .section {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid black;
+            margin: 20px;
+        }
 
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      font-size: 18px;
-      cursor: pointer;
-      border: 2px solid black;
-    }
+        .button {
+            display: inline-block;
+            padding: 20px 40px;
+            font-size: 24px;
+            cursor: pointer;
+            border: 2px solid black;
+            transition: background-color 0.3s;
+        }
 
-    /* Planning Section */
-    #planning-section {
-      background-color: #fff;
-    }
+        .filter-section {
+            display: none;
+            margin-top: 20px;
+        }
 
-    #view-plan-btn {
-      background-color: red;
-      color: #fff;
-    }
+        .data-sheet {
+            display: none;
+            margin-top: 20px;
+        }
 
-    /* Pre-Cutover Follow-up Section */
-    #pre-cutover-section {
-      background-color: #e0e0e0;
-    }
+        select,
+        input {
+            padding: 8px;
+            font-size: 16px;
+        }
 
-    #confirm-btn {
-      background-color: #00bcd4; /* cayan color */
-      color: #fff;
-    }
+        .search-btn {
+            color: #fff;
+            cursor: pointer;
+        }
 
-    /* Post Cutover Section */
-    #post-cutover-section {
-      background-color: #ff9800; /* orange color */
-    }
+        .view-plan-btn {
+            background-color: red;
+        }
 
-    #track-btn {
-      background-color: #ff9800;
-      color: #fff;
-    }
+        .confirm-btn {
+            background-color: cyan;
+        }
 
-    /* Dropdown styling */
-    select {
-      padding: 8px;
-      font-size: 16px;
-    }
+        .track-btn {
+            background-color: orange;
+        }
 
-    /* Search button styling */
-    .search-btn {
-      background-color: red;
-      color: #fff;
-    }
+        .data-sheet table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-    /* Data Sheet styling */
-    .data-sheet {
-      margin-top: 20px;
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    .data-sheet th, .data-sheet td {
-      border: 1px solid black;
-      padding: 8px;
-      text-align: left;
-    }
-  </style>
+        .data-sheet th,
+        .data-sheet td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- Planning Section -->
-  <div id="planning-section" class="section">
-    <h2>Planning</h2>
-    <h4 style="font-size: 14px;">Store Level Planning</h4>
-    <div id="view-plan-btn" class="button" onclick="openFilterSection('filter-planning')">View/Plan</div>
-  </div>
+    <div class="section">
+        <h2>Planning</h2>
+        <h4 style="font-size: 14px;">Store Level Planning</h4>
+        <div class="button view-plan-btn" onclick="openFilterSection('planning')">View/Plan</div>
+        <div class="filter-section" id="filter-section-planning">
+            <select>
+                <option>Ross Register Refresh</option>
+                <option>Ross Wi-Fi refresh</option>
+            </select>
+            <select>
+                <option>0684</option>
+            </select>
+            <select>
+                <option>All Months</option>
+                <!-- Add options for all 12 months -->
+            </select>
+            <input type="date" placeholder="From Date">
+            <input type="date" placeholder="To Date">
+            <select>
+                <option>Planned</option>
+                <option>Potential Reschedule</option>
+                <option>Cancelled</option>
+            </select>
+            <div class="search-btn button" style="background-color: red;" onclick="searchData('planning')">Search</div>
+        </div>
+        <div class="data-sheet" id="data-sheet-planning">
+            <h3>Data Sheet - Planning</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Store Number</th>
+                        <th>Store Name</th>
+                        <th>Planned Install Date</th>
+                        <th>Vendor</th>
+                        <th>Replacement Type</th>
+                        <th>Tech Arrival Time</th>
+                        <th>Store Closing Time</th>
+                        <th>Store E-mail Id</th>
+                        <th>Store MOD E-mail Id</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Postal Code</th>
+                        <th>Country Code</th>
+                        <th>Phone Number</th>
+                        <th>Time Zone</th>
+                        <th>MOD</th>
+                        <th>MOD for Install</th>
+                        <th>Asset Delivery</th>
+                        <th>Call to Store T-5</th>
+                        <th>Conversation Notes</th>
+                        <th>Call to Store T-3</th>
+                        <th>Conversation Notes</th>
+                        <th>Call to Store T-1</th>
+                        <th>Conversation Notes</th>
+                        <th>Shipment Received On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dummy data row for Planning -->
+                    <tr>
+                        <td>0684</td>
+                        <td>Spring Valley</td>
+                        <td>01-01-2024</td>
+                        <td>Toshiba</td>
+                        <td>Swap</td>
+                        <td>20:30:00</td>
+                        <td>21:00:00</td>
+                        <td>store.0684@ross.com</td>
+                        <td>store.manager.0684.ross.com</td>
+                        <td>1764 Bernal Rd Street 60A</td>
+                        <td>Cheyenne</td>
+                        <td>WY</td>
+                        <td>110070</td>
+                        <td>01</td>
+                        <td>1234567899</td>
+                        <td>PST</td>
+                        <td>Glen</td>
+                        <td>Maxwell</td>
+                        <td>
+                            <span style="color: green;">Yes</span>
+                            <br>
+                            <span style="color: red;">No</span>
+                        </td>
+                        <td>Yes</td>
+                        <td>Store is gathering info</td>
+                        <td>Yes</td>
+                        <td>Store is allocating people</td>
+                        <td>Yes</td>
+                        <td>Store is ready for installation</td>
+                        <td>31-12-2023</td>
+                    </tr>
+                    <!-- Add more dummy data rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-  <!-- Pre-Cutover Follow-up Section -->
-  <div id="pre-cutover-section" class="section">
-    <h2>Pre-Cutover Follow-up</h2>
-    <h4 style="font-size: 14px;">Check Your Store/Technician</h4>
-    <div id="confirm-btn" class="button" onclick="openFilterSection('filter-follow-up')">Confirm</div>
-  </div>
+    <div class="section">
+        <h2>Pre-Cutover Follow Up</h2>
+        <h4 style="font-size: 14px;">Check Your Store/Technician</h4>
+        <div class="button confirm-btn" onclick="openFilterSection('follow-up')">Confirm</div>
+        <div class="filter-section" id="filter-section-follow-up">
+            <select>
+                <option>Ross Register Refresh</option>
+                <option>Ross Wi-Fi refresh</option>
+            </select>
+            <select>
+                <option>0684</option>
+            </select>
+            <div class="search-btn button" style="background-color: cyan;" onclick="searchData('follow-up')">Search</div>
+        </div>
+        <div class="data-sheet" id="data-sheet-follow-up">
+            <h3>Data Sheet - Pre-Cutover Follow Up</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>MOD Name</th>
+                        <th>Store Calling Number</th>
+                        <th>Lead Technician Name</th>
+                        <th>Lead Tech Calling Number</th>
+                        <th>Assist Technician Name</th>
+                        <th>Assist Tech Calling Number</th>
+                        <th>Called the Tech(s)</th>
+                        <th>Called the MOD</th>
+                        <th>MOD Name</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dummy data row for Pre-Cutover Follow Up -->
+                    <tr>
+                        <td>Sachin</td>
+                        <td>1234567899</td>
+                        <td>Virat</td>
+                        <td>1234567888</td>
+                        <td>Shubhman</td>
+                        <td>1234567777</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Sachin</td>
+                        <td>Store received the shipment boxes and has MOD Sachin aligned to stay overnight respectively.</td>
+                    </tr>
+                    <!-- Add more dummy data rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-  <!-- Post Cutover Section -->
-  <div id="post-cutover-section" class="section">
-    <h2>Post Cutover</h2>
-    <h4 style="font-size: 14px;">Get Live Status</h4>
-    <div id="track-btn" class="button" onclick="openFilterSection('filter-post-cutover')">Track</div>
-  </div>
+    <div class="section">
+        <h2>Post-Cutover</h2>
+        <h4 style="font-size: 14px;">Get Live Status</h4>
+        <div class="button track-btn" onclick="openFilterSection('post-cutover')">Track</div>
+        <div class="filter-section" id="filter-section-post-cutover">
+            <select>
+                <option>Ross Register Refresh</option>
+                <option>Ross Wi-Fi refresh</option>
+            </select>
+            <select>
+                <option>0684</option>
+            </select>
+            <select>
+                <option>All Months</option>
+                <!-- Add options for all 12 months -->
+            </select>
+            <input type="date" placeholder="From Date">
+            <input type="date" placeholder="To Date">
+            <div class="search-btn button" style="background-color: orange;" onclick="searchData('post-cutover')">Search</div>
+        </div>
+        <div class="data-sheet" id="data-sheet-post-cutover">
+            <h3>Data Sheet - Post-Cutover</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Store Number</th>
+                        <th>Install Date</th>
+                        <th>Vendor</th>
+                        <th>Replacement Type</th>
+                        <th>Tech Arrival Time</th>
+                        <th>Store Closing Time</th>
+                        <th>Register Count</th>
+                        <th>Status</th>
+                        <th>Return Visit Required</th>
+                        <th>Reason for Return</th>
+                        <th>Garage Plates Used</th>
+                        <th>Notes</th>
+                        <th>Tech Check-Out Time</th>
+                        <th>Total Time On Site</th>
+                        <th># of Techs</th>
+                        <th>Additional Deployment Comments</th>
+                        <!-- Add more headers as needed -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dummy data row for Post-Cutover -->
+                    <tr>
+                        <td>0420</td>
+                        <td>01-01-2024</td>
+                        <td>Shyft</td>
+                        <td>Replacement</td>
+                        <td>20:30:00</td>
+                        <td>21:00:00</td>
+                        <td>6</td>
+                        <td>Incomplete</td>
+                        <td>Yes</td>
+                        <td>Reg# 6 HDD stolen by customer</td>
+                        <td>Yes</td>
+                        <td>Reg# 5 doesn't give initial welcome voice prompt. All other voice prompts working. Validations were completed</td>
+                        <td>04:21:00</td>
+                        <td>8 hrs</td>
+                        <td>1</td>
+                        <td>Yes</td>
+                        <!-- Add more dummy data rows as needed -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-  <!-- Filter Section (Hidden by default) -->
-  <div id="filter-section" style="display: none;" class="section">
-    <h3 id="filter-title">Filter Options</h3>
-    <label for="project-name">Project Name:</label>
-    <select id="project-name"></select><br>
+    <script>
+        function openFilterSection(section) {
+            document.querySelectorAll('.filter-section').forEach(filterSection => {
+                filterSection.style.display = 'none';
+            });
+            document.getElementById('filter-section-' + section).style.display = 'block';
+            document.querySelectorAll('.data-sheet').forEach(dataSheet => {
+                dataSheet.style.display = 'none';
+            });
+        }
 
-    <label for="store-number">Store Number:</label>
-    <select id="store-number"></select><br>
+        function searchData(section) {
+            const dummyData = {
+                'planning': [
+                    ["0684", "Spring Valley", "01-01-2024", "Toshiba", "Swap", "20:30:00", "21:00:00", "store.0684@ross.com", "store.manager.0684.ross.com", "1764 Bernal Rd Street 60A", "Cheyenne", "WY", "110070", "01", "1234567899", "PST", "Glen", "Maxwell", "Yes", "Yes", "Reg# 6 HDD stolen by customer", "Yes", "Reg# 5 doesn't give initial welcome voice prompt. All other voice prompts working. Validations were completed", "31-12-2023"],
+                ],
+                'follow-up': [
+                    ["Sachin", "1234567899", "Virat", "1234567888", "Shubhman", "1234567777", "Yes", "Yes", "Sachin", "Store received the shipment boxes and has MOD Sachin aligned to stay overnight respectively."],
+                ],
+                'post-cutover': [
+                    ["0420", "01-01-2024", "Shyft", "Replacement", "20:30:00", "21:00:00", "6", "Incomplete", "Yes", "Reg# 6 HDD stolen by customer", "Yes", "Reg# 5 doesn't give initial welcome voice prompt. All other voice prompts working. Validations were completed", "04:21:00", "8 hrs", "1", "Yes"],
+                ],
+            };
 
-    <label for="deployment-month">Deployment Month:</label>
-    <select id="deployment-month"></select><br>
-
-    <label for="from-date">From Date:</label>
-    <input type="date" id="from-date"><br>
-
-    <label for="to-date">To Date:</label>
-    <input type="date" id="to-date"><br>
-
-    <label for="status">Status:</label>
-    <select id="status"></select><br>
-
-    <div id="search-btn" class="search-btn button" onclick="searchData()">Search</div>
-  </div>
-
-  <!-- Data Sheet Section (Hidden by default) -->
-  <div id="data-sheet" style="display: none;" class="section">
-    <h3 id="data-sheet-title">Data Sheet</h3>
-    <table class="data-sheet">
-      <thead>
-        <!-- Headers will be dynamically populated based on section -->
-      </thead>
-      <tbody id="data-sheet-body">
-        <!-- Dummy data rows will be populated here -->
-      </tbody>
-    </table>
-  </div>
-
-  <!-- JavaScript for functionality -->
-  <script>
-    function openFilterSection(filterType) {
-      document.getElementById('filter-section').style.display = 'block';
-      document.getElementById('data-sheet').style.display = 'none';
-
-      // Clear previous options
-      clearFilterOptions();
-
-      // Populate filter options based on section
-      if (filterType === 'filter-planning') {
-        document.getElementById('filter-title').textContent = 'Planning Filter Options';
-        populateFilterOptions('project-name', ['Ross Register Refresh', 'Ross Wi-Fi Refresh']);
-        populateFilterOptions('store-number', ['All', '0684', '0420']); // Add more dummy store numbers
-        populateFilterOptions('deployment-month', ['All', 'Jan', 'Feb', 'Mar']); // Add more months
-        populateFilterOptions('status', ['Planned', 'Potential Reschedule', 'Cancelled']);
-      } else if (filterType === 'filter-follow-up') {
-        document.getElementById('filter-title').textContent = 'Pre-Cutover Follow-up Filter Options';
-        populateFilterOptions('store-number', ['Select Store', '0684', '0420']); // Add more dummy store numbers
-      } else if (filterType === 'filter-post-cutover') {
-        document.getElementById('filter-title').textContent = 'Post Cutover Filter Options';
-        populateFilterOptions('project-name', ['Ross Register Refresh', 'Ross Wi-Fi Refresh']);
-        populateFilterOptions('store-number', ['All', '0420', '0542']); // Add more dummy store numbers
-        populateFilterOptions('deployment-month', ['All', 'Jan', 'Feb', 'Mar']); // Add more months
-      }
-    }
-
-    function populateFilterOptions(selectId, options) {
-      const select = document.getElementById(selectId);
-      options.forEach(option => {
-        const optionElem = document.createElement('option');
-        optionElem.value = option.toLowerCase().replace(/\s/g, '-'); // Convert to lowercase and replace spaces with hyphens
-        optionElem.textContent = option;
-        select.appendChild(optionElem);
-      });
-    }
-
-    function clearFilterOptions() {
-      const selects = document.querySelectorAll('select');
-      selects.forEach(select => {
-        select.innerHTML = '';
-      });
-    }
-
-    function searchData() {
-      // Dummy data for demonstration purposes
-      const dummyData = [
-        // Data rows will be dynamically populated based on section
-      ];
-
-      // Populate data sheet with dummy data
-      const dataSheetBody = document.getElementById('data-sheet-body');
-      dataSheetBody.innerHTML = '';
-      dummyData.forEach(rowData => {
-        const row = document.createElement('tr');
-        rowData.forEach(cellData => {
-          const cell = document.createElement('td');
-          cell.textContent = cellData;
-          row.appendChild(cell);
-        });
-        dataSheetBody.appendChild(row);
-      });
-
-      // Headers will be dynamically populated based on section
-      const dataSheetHeaders = document.querySelector('.data-sheet thead');
-      dataSheetHeaders.innerHTML = '';
-
-      // Show data sheet
-      document.getElementById('data-sheet').style.display = 'block';
-    }
-  </script>
+            const dataSheetBody = document.querySelector('#data-sheet-' + section + ' tbody');
+            dataSheetBody.innerHTML = '';
+            dummyData[section].forEach(rowData => {
+                const row = document.createElement('tr');
+                rowData.forEach(cellData => {
+                    const cell = document.createElement('td');
+                    cell.textContent = cellData;
+                    row.appendChild(cell);
+                });
+                dataSheetBody.appendChild(row);
+            });
+            document.getElementById('data-sheet-' + section).style.display = 'block';
+        }
+    </script>
 </body>
+
 </html>
