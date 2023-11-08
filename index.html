@@ -25,6 +25,10 @@
         }
 
         /* Planning Section Styles */
+        #planning-section, #follow-up-section, #post-cutover-section {
+            display: none;
+        }
+
         #planning-section {
             background-color: #f0f0f0;
         }
@@ -35,35 +39,6 @@
             padding: 15px 30px;
             border: 2px solid black;
             cursor: pointer;
-        }
-
-        /* Filters Styles */
-        .filter {
-            margin: 10px;
-        }
-
-        #search-button {
-            background-color: red;
-            color: white;
-            padding: 10px 20px;
-            border: 2px solid black;
-            cursor: pointer;
-        }
-
-        /* Result Table Styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table, th, td {
-            border: 1px solid black;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
         }
 
         /* Pre-Cutover Follow-up Section Styles */
@@ -92,6 +67,34 @@
             cursor: pointer;
         }
 
+        /* Filters and Result Table Styles */
+        .filter {
+            margin: 10px;
+        }
+
+        #search-button, #submit-button, #search-track-button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
         /* Responsive Design */
         @media only screen and (min-width: 600px) {
             .box {
@@ -108,7 +111,7 @@
     <div class="box">
         <h2>Planning</h2>
         <h4 style="font-size: 14px;">Store Level Planning</h4>
-        <button id="planning-button">View/Plan</button>
+        <button id="planning-button" onclick="showSection('follow-up-section')">View/Plan</button>
 
         <!-- Filters -->
         <div class="filter">
@@ -120,69 +123,23 @@
         </div>
         <!-- Add other filters here -->
 
-        <button id="search-button">Search</button>
+        <button id="search-button" onclick="showResultTable('result-table-planning')">Search</button>
 
         <!-- Result Table -->
-        <table id="result-table">
+        <table id="result-table-planning">
             <!-- Table headers -->
             <tr>
                 <th>Store Number</th>
                 <th>Store Name</th>
                 <th>Planned Install Date</th>
-                <th>Vendor</th>
-                <th>Replacement Type</th>
-                <th>Tech Arrival Time</th>
-                <th>Store Closing Time</th>
-                <th>Store E-mail Id</th>
-                <th>Store MOD E-mail Id</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Postal Code</th>
-                <th>Country Code</th>
-                <th>Phone Number</th>
-                <th>Time Zone</th>
-                <th>MOD</th>
-                <th>MOD for Install</th>
-                <th>Asset Delivery</th>
-                <th>Call to Store T-5</th>
-                <th>Conversation Notes T-5</th>
-                <th>Call to Store T-3</th>
-                <th>Conversation Notes T-3</th>
-                <th>Call to Store T-1</th>
-                <th>Conversation Notes T-1</th>
-                <th>Shipment Triggered</th>
-                <th>Shipment Received on</th>
+                <!-- Add other headers here -->
             </tr>
             <!-- Table rows with dummy data -->
             <tr>
                 <td>0684</td>
                 <td>Spring Valley</td>
                 <td>01-01-2024</td>
-                <td>Toshiba</td>
-                <td>Swap</td>
-                <td>20:30:00</td>
-                <td>21:00:00</td>
-                <td>store.0684@ross.com</td>
-                <td>store.manager.0684.ross.com</td>
-                <td>1764 Bernal Rd Street 60A</td>
-                <td>Cheyenne</td>
-                <td>WY</td>
-                <td>110070</td>
-                <td>01</td>
-                <td>1234567899</td>
-                <td>PST</td>
-                <td>Glen</td>
-                <td>Maxwell</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Store is gathering info</td>
-                <td>Yes</td>
-                <td>Store is allocating people</td>
-                <td>Yes</td>
-                <td>Store is ready for installation</td>
-                <td>Yes</td>
-                <td>31-12-2023</td>
+                <!-- Add other data here -->
             </tr>
             <!-- Add more rows with similar structure for additional data -->
         </table>
@@ -194,7 +151,7 @@
     <div class="box">
         <h2>Pre-Cutover Follow-up</h2>
         <h4 style="font-size: 14px;">Check your store/technician</h4>
-        <button id="confirm-button">Confirm</button>
+        <button id="confirm-button" onclick="showSection('post-cutover-section')">Confirm</button>
 
         <!-- Dropdown and form for store selection -->
         <div id="store-selection" style="display: none;">
@@ -204,7 +161,7 @@
                 <option>1234</option>
                 <option>5678</option>
             </select>
-            <button id="submit-button">Submit</button>
+            <button id="submit-button" onclick="showResultTable('result-table-follow-up')">Submit</button>
 
             <!-- Data Fields -->
             <div id="data-fields" style="display: none;">
@@ -219,12 +176,12 @@
     <div class="box">
         <h2>Post Cutover</h2>
         <h4 style="font-size: 14px;">Get Live Status</h4>
-        <button id="track-button">Track</button>
+        <button id="track-button" onclick="showSection('post-cutover-section')">Track</button>
 
         <!-- Filters for tracking -->
         <div id="tracking-filters" style="display: none;">
             <!-- Add filters for tracking -->
-            <button id="search-track-button">Search</button>
+            <button id="search-track-button" onclick="showResultTable('track-result-table')">Search</button>
 
             <!-- Result Table for tracking -->
             <table id="track-result-table">
@@ -233,38 +190,14 @@
                     <th>Store Number</th>
                     <th>Install Date</th>
                     <th>Vendor</th>
-                    <th>Replacement Type</th>
-                    <th>Tech Arrival Time</th>
-                    <th>Store Closing Time</th>
-                    <th>Register Count</th>
-                    <th>Status</th>
-                    <th>Return Visit Required</th>
-                    <th>Reason for Return</th>
-                    <th>Garage Plates Used</th>
-                    <th>Notes</th>
-                    <th>Tech Check-Out Time</th>
-                    <th>Total Time On Site</th>
-                    <th># of Techs</th>
-                    <th>Additional Deployment Comments</th>
+                    <!-- Add other headers for tracking -->
                 </tr>
                 <!-- Table rows with dummy data for tracking -->
                 <tr>
                     <td>0420</td>
                     <td>01-01-2024</td>
                     <td>Shyft</td>
-                    <td>Replacement</td>
-                    <td>20:30:00</td>
-                    <td>21:00:00</td>
-                    <td>6</td>
-                    <td>Completed</td>
-                    <td>Yes</td>
-                    <td>Reg# 6 HDD stolen</td>
-                    <td>Yes</td>
-                    <td>Reg# 5 doesn't give initial welcome voice prompt. All other voice prompts working. Validations were completed</td>
-                    <td>04:21:00</td>
-                    <td>---</td>
-                    <td>1</td>
-                    <td>---</td>
+                    <!-- Add other data for tracking -->
                 </tr>
                 <!-- Add more rows with similar structure for additional data -->
             </table>
@@ -273,7 +206,19 @@
 </section>
 
 <script>
-    // Add JavaScript for handling button clicks, showing/hiding sections, and populating data
+    function showSection(sectionId) {
+        document.getElementById('planning-section').style.display = 'none';
+        document.getElementById('follow-up-section').style.display = 'none';
+        document.getElementById('post-cutover-section').style.display = 'none';
+        document.getElementById(sectionId).style.display = 'block';
+    }
+
+    function showResultTable(tableId) {
+        document.getElementById('result-table-planning').style.display = 'none';
+        document.getElementById('result-table-follow-up').style.display = 'none';
+        document.getElementById('track-result-table').style.display = 'none';
+        document.getElementById(tableId).style.display = 'table';
+    }
 </script>
 
 </body>
